@@ -17,4 +17,7 @@ Policies
 
 ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/6e0118d2-2b67-49b6-956f-8fcc50f1a1a7)
 
+-- IAM -- Credential Report -- ``` To check all the details about there users like password rotation, mfa and lot more ```
+       -- Users -- Pavan -- Access Advisor -- ``` To check all the services accessed by the user ```
+
 
