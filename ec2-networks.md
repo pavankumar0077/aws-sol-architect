@@ -61,3 +61,41 @@ different sets of racks) within an AZ. Scales to 100s of EC2 instances per group
 ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/e0573cd3-0a00-45b6-b0a9-b0939dc96107)
 
 ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/025c086d-0393-4a93-871b-b3fe72861d49)
+
+
+ENI 
+==
+REF LINK : https://aws.amazon.com/blogs/aws/new-elastic-network-interfaces-in-the-virtual-private-cloud/
+
+EC2 Hibernate
+===
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/e4699727-8b3e-474a-bee6-236e9251e4c8)
+
+- The in-memory (RAM) state is preserved
+- The instance boot is much faster!
+(the OS is not stopped / restarted)
+- Under the hood: the RAM state is written
+to a file in the root EBS volume
+The root EBS volume must be encrypted
+- Use cases:
+Long-running processing
+ Saving the RAM state
+Services that take time to initialize
+
+EC2 Hibernate - Good to know
+--
+- Supported Instance Families - C3, C4, C5, 13, M3, M4, R3, R4, T2, T3, ...
+- Instance RAM Size - must be less than 150 GB.
+- Instance Size - not supported for bare metal instances.
+- AMI – Amazon Linux 2, Linux AMI, Ubuntu, RHEL, CentOS & Windows...
+- Root Volume - must be EBS, encrypted, not instance store, and large
+- Available for On-Demand, Reserved and Spot Instances
+- An instance can NOT be hibernated more than 60 days
+
+To store the ram as hibernate process root ebs volume must be encrypted :
+--
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/f6f06ad0-19cd-459e-8add-31d3ad7385c0)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/2cd6df12-47e0-44bc-bf3e-2d732c9947cf)
+
+
