@@ -102,3 +102,24 @@ Application Load Balancer (v2)
 
 ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/f4298e07-0f56-4fe2-9d15-0b164eb7f5d9)
 
+ALB
+--
+- If you want your application to access using ALB and you don't want to access your application directly using ec2 instance then we add security group remove from anywhere and add only ALB security group.
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/7be52079-6efa-4d46-8a81-9c38ebdf752e)
+
+- This is the best pratice.
+
+- We can add HTTP listener -- Add RULE
+- ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/15c9b923-0231-4d39-ae94-de441c26ed10)
+- We can add conditions
+- ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/5cf297f8-6e4a-4b2c-ac21-c965194c7015) - Host based routing
+- ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/640cab24-ee3b-4d4e-ae07-b608faab6e3c) - Path based routing.
+- ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/1207f31e-259f-4bc5-8f88-faa257127f5e)
+- We can add upto 100 conditions rule limits
+- We can forward, redirect and fixed respone
+- ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/8f3efef2-8335-4d3f-8208-3f6b0008c403)
+- We can add Priority -- Lower numberr is the highest priority
+- ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/486fa5cf-bca1-4243-bfc5-bc0845495dfd)
+
+
