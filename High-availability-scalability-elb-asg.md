@@ -204,3 +204,20 @@ session data
 -- We can on and off by going into ALB -- Listeners -- Target group --> Attributes
 
 ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/46705c49-98a3-4d8c-b739-34faacadbfc0)
+
+ELB - SSL Certificates 
+==
+- An be enCrypteate atlast (in-i he encryption lients and your load balancer
+- SSL refers to Secure Sockets Layer, used to encrypt connections
+- TLS refers to Transport Layer Security, which is a newer version
+- Nowadays, TLS certificates are mainly used, but people still refer as SSL
+- Public SSL certificates are issued by Certificate Authorities (CA)
+- Comodo, Symantec, GoDaddy, GlobalSign, Digicert, Letsencrypt, etc...
+- SSL certificates have an expiration date (you set) and must be renewed
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/fe0183a5-0fac-46fd-87a5-3d74ce13eae0)
+
+SSL - SERVER NAME INDICATION (SNI)
+--
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/98d3e14c-1809-4a6f-b1a8-ea74740c02d1)
+
