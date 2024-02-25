@@ -221,3 +221,49 @@ SSL - SERVER NAME INDICATION (SNI)
 --
 ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/98d3e14c-1809-4a6f-b1a8-ea74740c02d1)
 
+- Classic Load Balancer (vI)
+  1.Support only one SSL certificate
+  2.Must use multiple CLB for multiple hostname with multiple SSL certificates
+- Application Load Balancer (v2)
+  1.Supports multiple listeners with multiple SSL certificates
+  2.Uses Server Name Indication (SNI) to make it work
+- Network Load Balancer (v2)
+  1.Supports multiple listeners with multiple SSL certificates
+  2.Uses Server Name Indication (SNI) to make it work
+
+ADD SSL CERTIFICATE TO ALB and NLB
+--
+--> Goto LB --> DEMOALB --> Add Listener 
+--> ADD HTTPS block and port 
+--> We have options to Forward, Redirect, Return Fixed Response, Authenticate
+--> ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/2bf4036b-9a9a-4cd6-8441-82d5ca29dded)
+--> Update with target group
+--> Certificate details -- ACM, Manual and etc.
+--> ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/0727533b-3bcc-4128-a7ea-be5ea827fafa)
+
+ELB - Connection Draining
+--
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/ec7d250c-d82b-4ad8-a997-8a8f33025b06)
+
+### AUTO SCALING GROUP ( ASG )
+
+- In real-life, the load on your websites and application can change
+- In the cloud, you can create and get rid of servers very quickly
+- The goal of an Auto Scaling Group (ASG) is to:
+- Scale out (add EC2 instances) to match an increased load
+- Scale in (remove EC2 instances) to match a decreased load
+- Ensure we have a minimum and a maximum number of EC2 instances running
+- Automatically register new instances to a load balancer
+- Re-create an EC2 instance in case a previous one is terminated (ex: if unhealthy)
+- ASG are free (you only pay for the underlying EC2 instances)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/990941ad-32db-42e3-8493-865d74ed227c)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/cc86e79e-fc81-4786-afa3-86bb1685f6cd)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/13561ff5-386b-4aec-9a16-ff79428f9775)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/cd1efbdc-9a58-400a-bcd8-1c4bbffb6cac)
+
+
+
