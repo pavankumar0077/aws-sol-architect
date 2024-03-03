@@ -43,3 +43,19 @@ MySQL (sub 10 ms replica lag)
 
 ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/b5b51ade-42c7-401a-ad48-12e8349f0b77)
 
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/73872ae8-9b1d-4b5f-85c2-441531758521)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/3a243b9d-a06e-496c-b8aa-e5639bff3f3f)
+
+Features of Aurora
+--
+- Automatic fail-over
+- Backup and Recovery
+- Isolation and security
+- Industry compliance
+- Push-button scaling
+- Automated Patching with Zero Downtime
+- Advanced Monitoring
+- Routine Maintenance
+- Backtrack: restore data at any point of time without using backups
+
