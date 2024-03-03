@@ -24,3 +24,6 @@ Advantage over using RDS versus deploying
 
 ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/f0e6cc67-1ea8-427c-87e0-7828c8e164e0)
 
+RDS CUSTOM
+--
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/bfd7712f-e137-4ba4-8bcb-d65a16ced925)
