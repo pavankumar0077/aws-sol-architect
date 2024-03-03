@@ -266,4 +266,36 @@ ELB - Connection Draining
 ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/cd1efbdc-9a58-400a-bcd8-1c4bbffb6cac)
 
 
+Auto Scaling Groups - Scaling Policies
+--
+- Dynamic Scaling
+  1.Target Tracking Scaling
+    1.Simple to set-up
+    - Example: I want the average ASG CPU to stay at around 40%
+- Simple / Step Scaling
+    1.When a CloudWatch alarm is triggered (example CPU > 70%), then add 2 units
+    2.When a CloudWatch alarm is triggered (example CPU < 30%), then remove I|
+- Scheduled Scaling
+  - Anticipate a scaling based on known usage patterns
+  - Example: increase the min capacity to 10 at 5 pm on Fridays
 
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/3fdbce80-b93d-479d-9266-246da90eb6eb)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/173a924f-70ea-4c80-bc8d-8a3999d33198)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/21d157aa-ddd4-44fc-a30b-337b50788b2c)
+
+### Dynamic Scaling Policies :
+### Scheduled Actions :
+- To schedule to upgrade in future
+- We have option as **CRON JOB** 
+### Predictive scaling policies
+- Machine learning driven
+- scale based on forecast
+
+Amazon Linx Stress Test
+--
+``` sudo amazon-linux-extras install epel -y ```
+``` suod yum install stress -y ```
+### To Run
+``` stress -c 4 ``` 
