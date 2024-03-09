@@ -96,5 +96,57 @@ between Aurora and AWS ML services
 - Use cases: fraud detection, ads targeting,
 sentiment analysis, product recommendations
 
+RDS Backup 
+--
+- Automated backups:
+  1. Daily full backup of the database (during the backup window)
+  2. Transaction logs are backed-up by RDS every 5 minutes
+  3. => ability to restore to any point in time (from oldest backup to 5 minutes ago)
+  4. 1 to 35 days of retention, set 0 to disable automated backups
+- Manual DB Snapshots
+  1. Manually triggered by the user
+  2. Retention of backup for as long as you want
+### Trick: in a stopped RDS database, you will still pay for storage. If you plan on stopping it for a long time, you should snapshot & restore instead
 
-  
+Aurora Backups
+--
+- Automated backups
+  1. 1 to 35 days (cannot be disabled)
+  2. point-in-time recovery in that timeframe
+- Manual DB Snapshots
+  1. Manually triggered by the user
+  2. Retention of backup for as long as you want
+ 
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/77ac6c10-3fe1-49de-82c0-a03e18d779cb)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/1fecd4a6-013b-4da6-9dc3-a785ade9fa2e)
+
+RDS & AURORA SECURITY
+--
+- At-rest encryption:
+  1. Database master & replicas encryption using AWS KMS - must be defined as launch time
+  2.If the master is not encrypted, the read replicas cannot be encrypted
+  3. To encrypt an un-encrypted database, go through a DB snapshot & restore as encrypted
+- In-flight encryption: TLS-ready by default, use the AWS TLS root certificates client-side
+- IAM Authentication: IAM roles to connect to your database (instead of username/pw)
+- Security Groups: Control Network access to your RDS / Aurora DB
+- No SSH available except on RDS Custom
+- Audit Logs can be enabled and sent to CloudWatch Logs for longer retention
+
+Amazon RBD Proxy
+--
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/01914510-0b4a-47e5-bba3-7e2fbbee973b)
+
+- Fully managed database proxy for RDS
+- Allows apps to pool and share DB connections established with the database
+- Improving database efficiency by reducing the stress on database resources (e.g., CPU, RAM) and minimize open connections (and timeouts)
+- Serverless, autoscaling, highly available (multi-AZ)
+- Reduced RDS & Aurora failover time by up 66%
+- Supports RDS (MySQL, PostgreSQL, MariaDB, MS
+SQL Server) and Aurora (MySQL, PostgreSQL)
+- No code changes required for most apps
+- Enforce IAM Authentication for DB, and securely
+store credentials in AWS Secrets Manager
+-RDS Proxy is never publicly accessible (must be
+accessed from VPC)"
+
