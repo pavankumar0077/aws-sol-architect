@@ -121,6 +121,100 @@ Alias Records Targets
 --
 ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/58c03f5b-1d3e-45d3-a7a8-815e37f312e1)
 
+Routing Policies
+--
+- Define how Route 53 responds to DNS queries
+- Don't get confused by the word "Routing"
+- It's not the same as Load balancer routing which routes the traffic
+- DNS does not route any traffic, it only responds to the DNS queries
+- Route 53 Supports the following Routing Policies
+  
+  1. Simple
+  
+ ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/1922ab5d-a4b9-4859-b5e7-38fd6014c359)
+ ```
+    1. Typically, route traffic to a single
+    resource
+    2. Can specify multiple values in the
+    same record
+    3. If multiple values are returned, a
+    random one is chosen by the client
+    4. When Alias enabled, specify only
+    one AWS resource
+    5. Can't be associated with Health
+    Checks
+```
+  ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/fd1df143-cfa4-4822-aae0-69154ca94c6f)
+
+  ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/d9431381-8a18-46fe-82f2-6aa1c272f7a3)
+
+  ### NOTE : If we have multiple records then client i mean broswer will take the decision. 
+  
+  2. Weighted :
+     ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/66a5fb93-0216-4234-bcf0-bd8c353e0253)
+
+     First record
+     --
+     ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/97729aed-7465-4b98-af96-6a393f3f5873)
+
+     Second record
+     --
+     ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/093596e8-85a7-4309-a994-9e2068cf06bf)
+
+     Third record
+     --
+     ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/d75c38fe-c957-4274-9035-3ff86d245d61)
+
+     ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/114dfdc7-d84b-42f2-b8f3-a1fd670e5ed9)
+
+  3. Latency based
+     ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/ad89b03c-48fd-4fa5-9a7c-8b036678dad4)
+
+     Record 1
+     --
+     ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/dbaa1790-9623-498e-a873-05aa2a006606)
+
+     Record 2
+     --
+     ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/94a960a3-f9ca-4ebd-b264-416d96161cb0)
+
+     Record 3
+     --
+     ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/83bd3068-ed55-4952-81c7-7bb0d4212cfa)
+
+     
+  5. Failover
+  6. Geolocation
+  7. Multi-Value Answer
+  8. Geoproximity (using Route 53 Traffic Flow feature)
+
+Route53 - Health Checks
+--
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/c83d8dc4-e9b7-46e2-8445-1521e6676685)
+
+- HTTP Health Checks are only for public
+resources
+- Health Check => Automated DNS Failover:
+  1. Health checks that monitor an endpoint
+(application, server, other AWS resource)
+  2. Health checks that monitor other health
+checks (Calculated Health Checks)
+  3.Health checks that monitor CloudWatch
+Alarms (full control !!) - e,g., throttle
+DynamoDB, alarms on RDS, custom
+... (helpful for private resources)
+- Health Checks are integrated with
+metrics
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/fe14b703-b001-4bed-9bcf-7d7bf14a829f)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/27ea5560-00ed-431c-a936-8457757a6204)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/0c962887-141e-41a4-bb9a-01128dc99cbb)
+
+Health Checks
+--
 
 
 
