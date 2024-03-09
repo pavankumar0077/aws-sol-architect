@@ -59,3 +59,42 @@ Features of Aurora
 - Routine Maintenance
 - Backtrack: restore data at any point of time without using backups
 
+Advanced Features of Aurora DB
+--
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/18eae6f5-018d-4cb1-9ae0-a6d3d37976ea)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/32321ba8-ee53-4463-b941-e3367cf6fb3e)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/6d5f1272-9b14-4cf1-8d94-c8374dc24dee)
+
+Global Aurora
+--
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/b6121e69-6f6c-4da7-8a26-2a7d2bc52b34)
+- Aurora Cross Region Read Replicas:
+  1. Useful for disaster recovery
+- 2. Simple to put in place
+- Aurora Global Database (recommended):
+  1. Primary Region (read/write)
+  2.Up to 5 secondary (read-only) regions, replication lag is less than I second
+  3.Up to 16 Read Replicas per secondary region
+  4. Helps for decreasing latency
+  5. Promoting another region (for disaster recovery) has an RTO of minute
+  ### **Typical cross-region replication takes less than 1 second**
+
+ Aurora Machine Learning
+ --
+ ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/e9a3a042-b0c9-4a2f-9713-643227618006)
+ 
+- Enables you to add ML-based predictions to
+your applications via SQL
+- Simple, optimized, and secure integration
+between Aurora and AWS ML services
+- Supported services
+1. Amazon SageMaker (use with any ML model)
+2. Amazon Comprehend (for sentiment analysis)
+- You don't need to have ML experience
+- Use cases: fraud detection, ads targeting,
+sentiment analysis, product recommendations
+
+
+  
