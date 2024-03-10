@@ -1,4 +1,4 @@
-![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/ffdcabf3-1ce2-4330-afd7-50a5c840b067)What is DNS?
+What is DNS?
 --
 - Domain Name System which translates the human friendly hostnames
 into the machine IP addresses
@@ -333,4 +333,4 @@ your DNS records.
   2. Update NS Records on 3rd party website to use Route 53 Name
 Servers
 - Domain Registrar != DNS Service
-- But every Domain Registrar usually comes with some DNS fel
+- But every Domain Registrar usually comes with some DNS features
