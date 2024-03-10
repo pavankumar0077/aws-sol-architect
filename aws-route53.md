@@ -1,4 +1,4 @@
-What is DNS?
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/ffdcabf3-1ce2-4330-afd7-50a5c840b067)What is DNS?
 --
 - Domain Name System which translates the human friendly hostnames
 into the machine IP addresses
@@ -183,11 +183,91 @@ Routing Policies
      ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/83bd3068-ed55-4952-81c7-7bb0d4212cfa)
 
      
-  5. Failover
-  6. Geolocation
-  7. Multi-Value Answer
-  8. Geoproximity (using Route 53 Traffic Flow feature)
+  4. Failover
+     
+     ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/9f82189f-5fa8-4e5e-be81-0043e6580d6b)
 
+      Record 1
+     --
+     ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/2ce68fb6-5304-4bac-8b03-bd37386c1456)
+
+      Record 2
+     --
+     ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/a8627c30-159e-4b1d-9453-02027a46eac3)
+**When record 1 is failover with health checks then record 2 will be routed.**
+
+     
+  5. Geolocation
+
+  ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/40086be3-5e25-4dc8-92ee-0f6825698fb9)
+
+- Different from Latency-based!
+- This routing is based on user location
+- Specify location by Continent, Country
+or by US State (if there's overlapping,
+most precise location selected)
+- Should create a "Default" record (in
+case there's no match on location)
+- Use cases: website localization,
+content distribution, load balar
+- Can be associated with Health.
+
+    Record 1
+  --
+  ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/37c3bcf6-2b45-4536-a840-4e244c7fdb2a)
+
+  Record 2
+  --
+  **Add another location**
+
+  Record 3
+  --
+  **Default location**
+
+  6. IP-Based Routing
+
+  ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/9966eeef-3f5b-475a-bd5d-ac8c57f9b40c)
+
+- Routing is based on clients' IP addresses
+- You provide a list of CIDRs for your clients
+and the corresponding endpoints/locations
+(user-IP-to-endpoint mappings)
+- Use cases: Optimize performance, reduce
+network costs...
+- Example: route end users from a particular
+ISP to a specific endpoint
+  
+  7. Multi-Value Answer
+
+ - Use when routing traffic to multiple resources
+- Route 53 return multiple values/resources
+- Can be associated with Health Checks (return only values for healthy resources)
+- Up to 8 healthy records are returned for each Multi-Value query
+- Multi-Value is not a substitute for having an ELB
+
+  ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/b4aaf96a-828e-454e-8681-727e93c22db0)
+
+  **Add three records with multivalue anwser with different ip's**
+  ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/b96d9b38-a12a-4d00-9d12-5ae9fca293c0)
+
+  
+  8. Geoproximity (using Route 53 Traffic Flow feature)
+ 
+  ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/5e3516dc-0d60-4b2f-aa2d-058b6112050c)
+
+  ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/4c5a553c-3200-484e-a6e5-67f0f1fa1f4c)
+
+- Route traffic to your resources based on the geographic location of users and
+resources
+- Ability to shift more traffic to resources based on the defined bias
+- To change the size of the geographic region, specify bias values:
+- To expand (I to 99) - more traffic to the resource
+- To shrink (-I to -99) - less traffic to the resource
+- Resources can be:
+- AWS resources (specify AWS region) |
+- Non-AWS resources (specify Latitude and Longitude)
+- You must use Route 53 Traffic Flow (advanced) to use this feature
+  
 Route53 - Health Checks
 --
 
@@ -215,6 +295,42 @@ metrics
 
 Health Checks
 --
+Route53 --> Health checks --> create health check 
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/a935a30c-fd65-4659-9c89-9ad0c96cdbeb)
+
+**Check security group and give the required ports**
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/e99758a6-1104-4cf7-97e0-e336ee07c4af)
+
+**Monitor health check**
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/8915caa9-59f8-4d32-81b0-dbaa95a05f9a)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/3c9423db-5827-4b43-94a7-ea55f4b13123)
 
 
+3rd party domain
+--
 
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/f8220f61-79f6-4454-8cb1-ec6052e71713)
+
+- You buy or register your domain name with a Domain Registrar typically by
+paying annual charges (e.g, GoDaddy, Amazon Registrar Inc., ...)
+- The Domain Registrar usually provides you with a DNS service to manage
+your DNS records
+- But you can use another DNS service to manage your DINS records
+- Example: purchase the domain from GoDaddy and use Route 53 to manage
+your DNS records.
+
+**When you want to use Godaddy for domain and Route53 for DNS records management then we have to use Godaddy Name servers in the Route53 Name servers**
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/0f29c4b2-06d5-44fa-8b96-8eff5c7d40af)
+
+### 3rd Party Registrar with Amazon Route 53
+
+- If you buy your domain on a 3rd party registrar, you can still use Route
+53 as the DNS Service provider
+  1. Create a Hosted Zone in Route 53
+  2. Update NS Records on 3rd party website to use Route 53 Name
+Servers
+- Domain Registrar != DNS Service
+- But every Domain Registrar usually comes with some DNS fel
