@@ -50,3 +50,10 @@ Elastic Beanstalk - Deployement Modes
 --
 ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/7c3bfa8d-c2b4-45db-bf9f-03d9f04208ea)
 
+Hands on 
+--
+Beanstalk with default ooptions --> Create EC2 profile role --> 
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/3a781e5b-f7e3-4d37-9c8a-6c2855f8de18)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/8d48f6df-1eeb-4ac9-badb-c0d12cb6bcc2)
+
