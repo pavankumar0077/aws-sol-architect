@@ -112,3 +112,23 @@ the correct CORS headers
 
 ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/7d7cf77f-a71a-4e2c-a8ae-d8c8c8839bd0)
 
+- To allow S3 bucket items to use from different resouces then we need to ALLOW CORS
+```
+[
+    {
+        "AllowedHeaders": [
+            "Authorization"
+        ],
+        "AllowedMethods": [
+            "GET"
+        ],
+        "AllowedOrigins": [
+            "<url of first bucket with http://...without slash at the end>"
+        ],
+        "ExposeHeaders": [],
+        "MaxAgeSeconds": 3000
+    }
+]
+```
+
+- we can use AllowedOrigins : * TO ALLOW ALL ORIGINS ( WEBISTES ), FOR PROD WE NEED TO USE ONLY KNOW HOSTS.
