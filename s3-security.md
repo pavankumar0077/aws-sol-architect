@@ -82,4 +82,33 @@ Service Quotas Console
 - ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/eed59493-4c0b-4c2c-8b60-cf1017f9afa0)
 - This is to reduce cost by doing less API calls to AWS KMS, This is enabled by default.
 - If we use SSE-S3 the Bucket Key is Enabled by Default.
-- 
+
+Amazon S3 - Default Encryption vs. Bucket Policies
+--
+- SSE-S3 encryption is automatically applied to new objects stored in 53 bucket
+- Optionally, you can "force encryption" using a bucket policy and refuse any API Call to PUT an S3 object without encryption headers (SSE-KMS or SSE-C)
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/70a53297-1332-4ed9-8ec8-68536eb5f649)
+- NOTE : BUCKET POLICIES ARE EVALUATED BEFORE "DEFAULT ENCRYPTION"
+
+S3 CORS
+--
+What is CORS?
+- Cross-Origin Resource Sharing (CORS)
+- Origin = scheme (protocol) + host (domain) + port
+- example: https://www.example.com (implied port is 443 for HTTPS, 80 for HTTP)
+- Web Browser based mechanism to allow requests to other origins while
+visiting the main origin
+- Same origin: http://example.com/app| & http://example.com/app2
+- Different origins: http://www.example.com & http://other.example.com
+- The requests won't be fulfilled unless the other origin allows for the
+requests, using CORS Headers (example: Access-Control-Allow-Origin)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/e50108e0-0124-40e6-a93c-60dfaca591c8)
+
+- If a client makes a cross-origin request on our S3 bucket, we need to enable
+the correct CORS headers
+- It's a popular exam question
+- You can allow for a specific origin or for * (all origins)
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/7d7cf77f-a71a-4e2c-a8ae-d8c8c8839bd0)
+
