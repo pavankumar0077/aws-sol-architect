@@ -132,3 +132,46 @@ the correct CORS headers
 ```
 
 - we can use AllowedOrigins : * TO ALLOW ALL ORIGINS ( WEBISTES ), FOR PROD WE NEED TO USE ONLY KNOW HOSTS.
+
+Amazon S3 - MFA Delete
+--
+- MFA (Multi-Factor Authentication) - force users to generate a code on a
+device (usually a mobile phone or hardware) before doing important
+operations on S3
+- MFA will be required to:
+- Permanently delete an object version
+- Suspend Versioning on the bucket
+- MFA won't be required to:
+- Enable Versioning
+- List deleted versions
+- To use MFA Delete, Versioning must be enabled on the bucket
+- Only the bucket owner (root account) can enable/disable MFA Delete
+
+MFA HANDS ON
+--
+### NOTE : - We can enable MFA by using CLI as of now, That too from ROOT ACCOUNT
+```
+# generate root access keys
+aws configure --profile root-mfa-delete-demo
+
+# enable mfa delete
+aws s3api put-bucket-versioning --bucket mfa-demo-stephane --versioning-configuration Status=Enabled,MFADelete=Enabled --mfa "arn-of-mfa-device mfa-code" --profile root-mfa-delete-demo
+
+# disable mfa delete
+aws s3api put-bucket-versioning --bucket mfa-demo-stephane --versioning-configuration Status=Enabled,MFADelete=Disabled --mfa "arn-of-mfa-device mfa-code" --profile root-mfa-delete-demo
+
+# delete the root credentials in the IAM console!!!
+```
+S3 Access Logs
+--
+- For audit purpose, you may want to log all access to S3 buckets
+- Any request made to S3, from any account, authorized or denied,
+will be logged into another S3 bucket
+- That data can be analyzed using data analysis tools...
+- The target logging bucket must be in the same AWS region
+- The log format is at:
+https://docs.aws.amazon.com/AmazonS3/latest/dev/LogFormat.html
+
+- Do not set your logging bucket to be the monitored bucket
+- It will create a logging loop, and your bucket will grow exponentially
+
