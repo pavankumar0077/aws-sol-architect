@@ -175,3 +175,107 @@ https://docs.aws.amazon.com/AmazonS3/latest/dev/LogFormat.html
 - Do not set your logging bucket to be the monitored bucket
 - It will create a logging loop, and your bucket will grow exponentially
 
+- ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/f9ad863a-940d-44c7-96b2-6e99672ff500)
+- Here TARGET BUCKET FOR LOGGING SHOULD BE DIFFERNT FROM THE BUCKET WHAT WE ARE USING FOR S3 OBJECTS
+- ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/0a0107dd-a637-4ccc-bf45-8f6a4da0ae7f)
+- access logs
+- ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/571537f9-0fb0-4f64-bc3b-d67626fa110c)
+
+Amazon S3 - Pre-Signed URLs
+--
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/9aa760ef-2c28-4b7f-941b-4812fc61f3a4)
+
+- Generate pre-signed URLs using the S3 Console, AWS CL or SDK
+- URL Expiration
+- S3 Console - I min up to 720 mins (12 hours)
+- AWS CLI - configure expiration with -expires-in parameter in seconds (default 3600 secs, max. 604800 secs ~ 168 hours )
+- Users given a pre-signed URL inherit the permissions of the user
+that generated the ORL for GET / PUT
+- Examples:
+- Allow only logged-in users to download a premium video from y
+bucket|
+- Allow an ever-changing list of users to download files by generati
+dynamically
+- Allow temporarily a user to upload a file to a precise location in
+your S3 bucket
+
+
+Hands on
+--
+- ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/d1ef5e7f-a350-4082-8ec2-475b99357566)
+- ![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/522ee8b7-1cb4-4831-8a63-216f4e26e1dd)
+
+S3 Glacier Valut Lock
+--
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/5ca3b6ef-1a53-4976-a41f-be876f224a2d)
+
+- Adopt a WORM (Write Once Read
+Many) model
+- Create a Vault Lock Policy
+- Lock the policy for future edits
+(can no longer be changed or deleted)
+- Helpful for compliance and data
+retention.
+
+S3 Object Lock (versioning must be enabled)
+--
+- Adopt a WORM (Write Once Read Many) model
+- Block an object version deletion for a specified amount of time
+- Retention mode - Compliance:
+- Object versions can't be overwritten or deleted by any user, including the root user
+- Objects retention modes can't be changed, and retention periods can't be shortened
+- Retention mode - Governance:
+- Most users can't overwrite or delete an object version or alter its lock settings
+- Some users have special permissions to change the retention or delete the object.
+- Retention Period: protect the object for a fixed period, it can be extended
+- Legal Hold:
+- protect the object indefinitely, independent from retention period
+- can be freely placed and removed using the s3.PutObjectLegal-old IAM permissions
+
+S3 Access Points
+--
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/e2d08ca0-b3b9-4cd8-ba38-abb7cb8c2321)
+
+- Access Points simplify security management for S3 Bucket
+- Each Access Point has:
+- its own DNS name (Internet Origin or VPC Origin)
+- an access point policy (similar to bucket policy) - manage security at scale
+
+S3 - Access Points - VPC Origin
+--
+
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/b79f4113-9c20-4230-a7c8-0c203e594aa1)
+
+- We can define the access
+point to be accessible
+only from within the VPC
+- You must create a VPC
+Endpoint to access the
+Access Point (Gateway
+or Interface Endpoint)
+- The VPC Endpoint Policy
+must allow access to the
+target bucket and Access
+Point
+
+S3 Object Lambda
+--
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/7b51b6bd-8221-483c-906c-4ff5525879b5)
+
+- Use AWS Lambda Functions to
+change the object before it is
+retrieved by the caller application
+- Only one 53 bucket is needed, on
+top of which we create 53 Access
+Point and S3 Object Lambda Access
+Points.
+- Use Cases:
+- Redacting personally identifiable
+nformation for analytics or non-
+production environments.
+as conting aM do a grats, such
+- Resizing and watermarking images on
+the fly using caller-specific details, such
+as the user who requested the object.
