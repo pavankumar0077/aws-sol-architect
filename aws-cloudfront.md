@@ -113,3 +113,4 @@ address
 - Anycast IP: all servers hold the same
 IP address and the client is routed to
 the nearest one
+![image](https://github.com/pavankumar0077/aws-sol-architect/assets/40380941/3e335668-5d02-40d1-ab4a-6bdc1a5de24b)
